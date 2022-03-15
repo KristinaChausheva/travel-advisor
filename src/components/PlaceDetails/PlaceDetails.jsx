@@ -4,11 +4,10 @@ import {
   Typography,
   Button,
   Card,
-  Cardsmedia,
+  CardMedia,
   CardContent,
   CardActions,
   Chip,
-  CardMedia,
 } from "@material-ui/core"
 import LocationOnIcon from "@material-ui/icons/LocationOn"
 import PhoneIcon from "@material-ui/icons/Phone"
