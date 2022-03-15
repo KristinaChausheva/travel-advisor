@@ -2,14 +2,14 @@ import React from "react"
 import GoogleMapReact from "google-map-react"
 import { Paper, Typography, useMediaQuery } from "@material-ui/core"
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined"
-import Rating from "@material-ui/lab"
+import Rating from "@material-ui/lab/Rating"
 
 import useStyles from "./styles"
 
-export default function Map({ setCoords, setBounds, coords }) {
-  const GOOGLE_API = "AIzaSyAbuMwCWVaaRvmbgrLC9Xa4ejfJoTXE9AU"
+export default function Map({ setCoords, setBounds, coords, places }) {
   const classes = useStyles()
-  const isMobile = useMediaQuery("(min-width:600px)") //isMobile will be false if the screen is larger than the given px
+  const isDesktop = useMediaQuery("(min-width:600px)") // will be true if the screen is larger than the given px
+  const matches = useMediaQuery("(min-width:600px)")
   // const dummyCoords = { lat: 0, lng: 0 }
   return (
     <div className={classes.mapContainer}>
@@ -27,7 +27,40 @@ export default function Map({ setCoords, setBounds, coords }) {
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
         }}
         onChildClick={""}
-      ></GoogleMapReact>
+      >
+        {places?.map((place, i) => (
+          <div
+            className={classes.markerContainer}
+            lat={Number(place.latitude)}
+            lng={Number(place.longitude)}
+            key={i}
+          >
+            {!isDesktop ? (
+              <LocationOnOutlinedIcon />
+            ) : (
+              <Paper elevation={3} className={classes.paper}>
+                <Typography
+                  className={classes.typography}
+                  variant="subtitle2"
+                  gutterBottom
+                >
+                  {" "}
+                  {place.name}
+                </Typography>
+                <img
+                  className={classes.pointer}
+                  alt={place.name}
+                  src={
+                    place.photo
+                      ? place.photo.images.large.url
+                      : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
+                  }
+                />
+              </Paper>
+            )}
+          </div>
+        ))}
+      </GoogleMapReact>
     </div>
   )
 }
