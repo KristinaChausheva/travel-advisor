@@ -13,7 +13,7 @@ export default function Map({
   places,
   setChildClicked,
 }) {
-  const GOOGLE_API = ""
+  const GOOGLE_API = "AIzaSyAbuMwCWVaaRvmbgrLC9Xa4ejfJoTXE9AU"
   const classes = useStyles()
   const isDesktop = useMediaQuery("(min-width:600px)") // will be true if the screen is larger than the given px
   const matches = useMediaQuery("(min-width:600px)")
