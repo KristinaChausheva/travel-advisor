@@ -6,7 +6,14 @@ import Rating from "@material-ui/lab/Rating"
 
 import useStyles from "./styles"
 
-export default function Map({ setCoords, setBounds, coords, places }) {
+export default function Map({
+  setCoords,
+  setBounds,
+  coords,
+  places,
+  setChildClicked,
+}) {
+  const GOOGLE_API = ""
   const classes = useStyles()
   const isDesktop = useMediaQuery("(min-width:600px)") // will be true if the screen is larger than the given px
   const matches = useMediaQuery("(min-width:600px)")
@@ -26,7 +33,7 @@ export default function Map({ setCoords, setBounds, coords, places }) {
           setCoords({ lat: e.center.lat, lng: e.center.lng })
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
         }}
-        onChildClick={""}
+        onChildClick={(child) => setChildClicked(child)}
       >
         {places?.map((place, i) => (
           <div
@@ -55,6 +62,12 @@ export default function Map({ setCoords, setBounds, coords, places }) {
                       ? place.photo.images.large.url
                       : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
                   }
+                />
+                <Rating
+                  name="read-only"
+                  size="small"
+                  value={Number(place.rating)}
+                  readOnly
                 />
               </Paper>
             )}
