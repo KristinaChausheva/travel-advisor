@@ -25,8 +25,8 @@ export default function List({
 }) {
   const classes = useStyles()
   const [elRefs, setElRefs] = useState([])
-  const [type, setType] = useState("restaurants")
-  const [rating, setRating] = useState("")
+  // const [type, setType] = useState("restaurants")
+  // const [rating, setRating] = useState("")
 
   console.log({ childClicked })
   useEffect(() => {
