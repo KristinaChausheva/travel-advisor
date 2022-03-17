@@ -14,7 +14,15 @@ import PlaceDetails from "../PlaceDetails/PlaceDetails"
 
 import useStyles from "./styles"
 
-export default function List({ places, childClicked, isLoading }) {
+export default function List({
+  places,
+  childClicked,
+  isLoading,
+  type,
+  setType,
+  rating,
+  setRating,
+}) {
   const classes = useStyles()
   const [elRefs, setElRefs] = useState([])
   const [type, setType] = useState("restaurants")
