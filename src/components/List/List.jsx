@@ -27,7 +27,7 @@ export default function List({
   // const [type, setType] = useState("restaurants")
   // const [rating, setRating] = useState("")
 
-  console.log({ childClicked })
+  // console.log({ childClicked })
   useEffect(() => {
     setElRefs((refs) =>
       Array(places?.length)
