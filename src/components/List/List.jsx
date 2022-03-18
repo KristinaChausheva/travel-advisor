@@ -7,7 +7,6 @@ import {
   MenuItem,
   FormControl,
   Select,
-  Card,
 } from "@material-ui/core"
 
 import PlaceDetails from "../PlaceDetails/PlaceDetails"
