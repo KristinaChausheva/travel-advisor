@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Trip Advisor CI/CD
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
