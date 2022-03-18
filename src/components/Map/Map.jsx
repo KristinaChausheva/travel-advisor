@@ -14,7 +14,6 @@ export default function Map({
   setChildClicked,
   weatherData,
 }) {
-  const GOOGLE_API = "AIzaSyAbuMwCWVaaRvmbgrLC9Xa4ejfJoTXE9AU"
   const classes = useStyles()
   const isDesktop = useMediaQuery("(min-width:600px)") // will be true if the screen is larger than the given px
   const matches = useMediaQuery("(min-width:600px)")
@@ -22,7 +21,7 @@ export default function Map({
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: GOOGLE_API }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coords}
         center={coords}
         defaultZoom={14}
