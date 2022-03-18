@@ -33,16 +33,14 @@ function App() {
   }, [rating])
 
   useEffect(() => {
-    // console.log(coordinates, bounds)
-    setIsLoading(true)
-    getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
-      // console.log(data)
-      // console.log(bounds.sw)
-      // console.log(bounds.ne)
-      setPlaces(data)
-      setFilteredPlaces([])
-      setIsLoading(false)
-    })
+    if (bounds) {
+      setIsLoading(true)
+      getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
+        setPlaces(data?.filter((place) => place.name && place.num_reviews > 0))
+        setFilteredPlaces([])
+        setIsLoading(false)
+      })
+    }
   }, [coords, bounds, type])
   return (
     <>
