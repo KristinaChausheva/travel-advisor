@@ -41,7 +41,7 @@ function App() {
         setIsLoading(false)
       })
     }
-  }, [coords, bounds, type])
+  }, [bounds, type])
   return (
     <>
       <CssBaseline />
